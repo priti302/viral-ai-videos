@@ -1,5 +1,3 @@
-import { ShoppingCart } from "lucide-react";
-import { Link } from "react-router-dom";
 import CountdownTimer from "./CountdownTimer";
 
 // BONUS IMAGES
@@ -16,110 +14,110 @@ import bonus12 from "@/assets/ANIME REELS BUNDLE.jpg";
 import bonus13 from "@/assets/GHIBLI STYLE REEL BUNDLE.jpg";
 import bonus14 from "@/assets/HULK BUNDLE POSTER.jpg";
 
+// ✅ REAL BUY LINK
+const HULK_BUY_LINK =
+  "https://superprofile.bio/vp/ai-viral-videos-–-ready-to-post-viral-content";
+
+const DEMO_LINK = "#";
+
+// ✅ ONE COMPACT BUTTON STYLE (REFERENCE IMAGE MATCH)
+const buyBtnClass =
+  "!inline-flex !w-fit px-6 py-2 text-sm font-semibold rounded-lg " +
+  "bg-gradient-to-r from-purple-600 to-pink-600 text-white " +
+  "hover:opacity-90 transition-all duration-200";
+
 const BonusesSection = () => {
   const bonuses = [
     {
       title: "100 Million Digital Products",
       description:
         "Instant access to a massive library of ready-to-use digital assets to create, grow, and earn online faster.",
-      price: "₹499/-",
-      originalPrice: "₹24,999/-",
       image: bonus5,
+      buyLink: DEMO_LINK,
     },
     {
       title: "5000+ AI Story Reels Bundle",
       description:
         "AI-generated story reels designed to capture attention, boost engagement, and go viral across platforms.",
-      price: "₹399/-",
-      originalPrice: "₹9,999/-",
       image: bonus6,
+      buyLink: DEMO_LINK,
     },
     {
       title: "25000+ Hot Girls Videos Bundle",
       description:
         "High-engagement viral videos crafted to maximize views and reach on Reels and Shorts.",
-      price: "₹4,999/-",
-      originalPrice: "₹9,999/-",
       image: bonus7,
+      buyLink: DEMO_LINK,
     },
     {
       title: "2000+ Food Videos Bundle",
       description:
         "Mouth-watering food videos optimized for virality on Instagram, YouTube Shorts, and TikTok.",
-      price: "₹399/-",
-      originalPrice: "₹9,999/-",
       image: bonus8,
+      buyLink: DEMO_LINK,
     },
     {
       title: "2000+ Mini AI Worker Videos Bundle",
       description:
         "Creative AI mini worker reels that add a unique and fun viral element to your content.",
-      price: "₹399/-",
-      originalPrice: "₹9,999/-",
       image: bonus9,
+      buyLink: DEMO_LINK,
     },
     {
       title: "Mr. Beast Reel Bundle (5000+ Videos)",
       description:
         "High-energy giveaway and challenge-style reels inspired by viral formats.",
-      price: "₹399/-",
-      originalPrice: "₹9,999/-",
       image: bonus10,
+      buyLink: DEMO_LINK,
     },
     {
       title: "2000+ Hindi Viral AI Podcast Reels",
       description:
         "Hindi AI podcast reels designed to boost views, engagement, and virality instantly.",
-      price: "₹399/-",
-      originalPrice: "₹9,999/-",
       image: bonus11,
+      buyLink: DEMO_LINK,
     },
     {
       title: "5000+ Anime Reels Bundle",
       description:
         "High-quality anime reels to attract anime lovers and grow your page faster.",
-      price: "₹399/-",
-      originalPrice: "₹9,999/-",
       image: bonus12,
+      buyLink: DEMO_LINK,
     },
     {
       title: "5000+ Viral Ghibli Style Reels",
       description:
         "Emotion-rich Ghibli-style reels with a unique artistic and viral appeal.",
-      price: "₹399/-",
-      originalPrice: "₹9,999/-",
       image: bonus13,
+      buyLink: DEMO_LINK,
     },
     {
       title: "2000+ AI Hulk Reels Bundle",
       description:
         "Power-packed Hulk-style AI reels designed for instant attention and virality.",
-      price: "₹399/-",
-      originalPrice: "₹9,999/-",
       image: bonus14,
+      buyLink: HULK_BUY_LINK,
+      highlight: true,
     },
     {
       title: "Instagram Growth Mastery Course",
       description:
         "Learn proven strategies to grow followers, boost engagement, and monetize Instagram effectively.",
-      price: "₹299/-",
-      originalPrice: "₹6,999/-",
       image: bonus3,
+      buyLink: DEMO_LINK,
     },
     {
       title: "YouTube Growth Mastery Course",
       description:
         "Step-by-step system to grow subscribers, increase watch time, and monetize using Shorts and long-form videos.",
-      price: "₹299/-",
-      originalPrice: "₹6,999/-",
       image: bonus4,
+      buyLink: DEMO_LINK,
     },
   ];
 
   return (
     <section className="py-16 px-4">
       <div className="max-w-5xl mx-auto">
-
         {/* HEADING */}
         <h3 className="text-xl md:text-2xl font-bold text-center mb-10">
           You Can Unlock These{" "}
@@ -135,41 +133,39 @@ const BonusesSection = () => {
           {bonuses.map((bonus, index) => (
             <div
               key={index}
-              className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl border border-border bg-card shadow-lg"
+              className={`flex flex-col md:flex-row gap-6 p-6 rounded-2xl border bg-card shadow-lg ${
+                bonus.highlight
+                  ? "border-primary ring-2 ring-primary/30"
+                  : "border-border"
+              }`}
             >
               {/* IMAGE */}
-              <div className="w-full md:w-[240px] flex justify-center items-center">
+              <div className="w-full md:w-[220px] flex justify-center">
                 <img
                   src={bonus.image}
                   alt={bonus.title}
-                  className="h-[220px] object-contain"
+                  className="h-[200px] object-contain"
                 />
               </div>
 
               {/* CONTENT */}
-              <div className="flex-1 flex flex-col justify-between">
+              <div className="flex-1 flex flex-col gap-4">
                 <div>
-                  <h4 className="text-xl font-bold mb-3">{bonus.title}</h4>
-
-                  <p className="text-sm md:text-base text-muted-foreground mb-4 leading-relaxed">
+                  <h4 className="text-lg font-bold mb-1">{bonus.title}</h4>
+                  <p className="text-sm text-muted-foreground">
                     {bonus.description}
-                  </p>
-
-                  <p className="text-lg font-bold text-red-500 mb-4">
-                    {bonus.price}{" "}
-                    <span className="text-muted-foreground line-through text-sm ml-2">
-                      {bonus.originalPrice}
-                    </span>
                   </p>
                 </div>
 
-                {/* INDIVIDUAL BUY BUTTON */}
-                <Link to="/checkout">
-                  <button className="w-full md:w-auto btn-primary-glow text-primary-foreground font-semibold py-2 px-6 rounded-lg flex items-center gap-2">
-                    <ShoppingCart className="w-4 h-4" />
-                    Buy Now
-                  </button>
-                </Link>
+                {/* ✅ COMPACT BUY BUTTON */}
+                <a
+                  href={bonus.buyLink}
+                  target={bonus.buyLink !== "#" ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className={buyBtnClass}
+                >
+                  Buy Now
+                </a>
               </div>
             </div>
           ))}
@@ -177,51 +173,29 @@ const BonusesSection = () => {
 
         {/* MAIN CTA */}
         <div className="text-center mt-16">
-          <p className="text-muted-foreground mb-1">
+          <p className="text-muted-foreground mb-2 text-sm">
             Get All Bundles In One Mega Deal
           </p>
 
-          <p className="text-gradient font-bold mb-3">
-            Total Value Of Bonuses: ₹50,000+
-          </p>
-
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
+          <h3 className="text-xl md:text-2xl font-bold mb-6">
             Buy Everything For Just{" "}
             <span className="text-gradient">₹999/-</span>
           </h3>
-
-          <p className="text-sm text-muted-foreground mb-6">
-            Time is running out. Reserve your place now!
-          </p>
 
           <div className="flex justify-center mb-6">
             <CountdownTimer />
           </div>
 
-          <Link to="/checkout">
-            <button className="btn-primary-glow text-primary-foreground font-semibold py-4 px-14 rounded-xl flex items-center gap-2 mx-auto text-lg">
-              <ShoppingCart className="w-5 h-5" />
-              Buy All ₹999
-            </button>
-          </Link>
+          {/* ✅ SAME COMPACT BUTTON */}
+         <a
+  href="https://superprofile.bio/vp/ultimate-viral-50000videos"
+  target="_blank"
+  rel="noopener noreferrer"
+  className={`${buyBtnClass} mx-auto`}
+>
+  Buy Now
+</a>
 
-          <p className="text-sm text-muted-foreground mt-5">
-            Register before{" "}
-            <span className="text-primary underline">28 FEB</span>{" "}
-            to unlock bonuses worth{" "}
-            <span className="text-accent">₹50,000</span>
-          </p>
-
-          <div className="flex items-center justify-center gap-2 mt-3">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-yellow-400 text-lg">★</span>
-              ))}
-            </div>
-            <span className="text-sm text-muted-foreground">
-              RATED 4.9 OUT OF 5
-            </span>
-          </div>
         </div>
       </div>
     </section>

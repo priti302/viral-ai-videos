@@ -1,29 +1,28 @@
-import { useEffect, useState } from 'react';
-import { Star, Video, Globe, Clock, Check, ShoppingCart } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import CountdownTimer from './CountdownTimer';
-import productBox from '@/assets/product-box1.jpeg';
+import { useEffect, useState } from "react";
+import { Star, Video, Globe, Check, ShoppingCart } from "lucide-react";
+import CountdownTimer from "./CountdownTimer";
+import productBox from "@/assets/product-box1.jpeg";
 
 const buyerNames = [
-  'Sahil',
-  'Aman',
-  'Rohit',
-  'Neha',
-  'Kunal',
-  'Priya',
-  'Arjun',
-  'Rahul',
-  'Ankit',
-  'Pooja',
+  "Sahil",
+  "Aman",
+  "Rohit",
+  "Neha",
+  "Kunal",
+  "Priya",
+  "Arjun",
+  "Rahul",
+  "Ankit",
+  "Pooja",
 ];
 
 // Auto date (tomorrow)
 const getTomorrowDate = () => {
   const date = new Date();
   date.setDate(date.getDate() + 1);
-  return date.toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'long',
+  return date.toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "long",
   });
 };
 
@@ -35,31 +34,30 @@ const HeroSection = () => {
       const randomName =
         buyerNames[Math.floor(Math.random() * buyerNames.length)];
       setBuyer(randomName);
-    }, 5000); // change name every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   const features = [
-    { icon: Video,  sublabel: 'Bas Download Karo' },
-    { icon: Globe, sublabel: 'Daily Post Karo' },
-    { icon: Video,  sublabel: 'Views, Followers & Income Grow Karo' },
-  
+    { icon: Video, sublabel: "Bas Download Karo" },
+    { icon: Globe, sublabel: "Daily Post Karo" },
+    { icon: Video, sublabel: "Views, Followers & Income Grow Karo" },
   ];
 
   const benefits = [
-    '5000+ Mr. Beast Style Reels',
-    '2000+ AI Hulk Reels Bundle',
-    '25000+ Hot Viral Reels',
-    '2000+ Mini AI Worker Videos',
-    '2000+ Hindi Viral AI Podcast Reels',
-    '2000+ Food Viral Reels',
-    '5000+ Ghibli Style Reels',
-    '3000+ Anime Reels',
-     'Instagram Growth Mastery Course ',
-    'YouTube Growth Mastery Course',
-    '5000+ AI Story Reels',
-    '100 Million+ Digital Products BONUS',
+    "5000+ Mr. Beast Style Reels",
+    "2000+ AI Hulk Reels Bundle",
+    "25000+ Hot Viral Reels",
+    "2000+ Mini AI Worker Videos",
+    "2000+ Hindi Viral AI Podcast Reels",
+    "2000+ Food Viral Reels",
+    "5000+ Ghibli Style Reels",
+    "3000+ Anime Reels",
+    "Instagram Growth Mastery Course",
+    "YouTube Growth Mastery Course",
+    "5000+ AI Story Reels",
+    "100 Million+ Digital Products BONUS",
   ];
 
   return (
@@ -72,22 +70,19 @@ const HeroSection = () => {
       </div>
 
       {/* Title */}
-     <div className="text-center mb-8 max-w-2xl mx-auto gradient-border p-6">
-  <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-    <span className="text-gradient">
-      TURN AI REELS INTO A <br />
-      1–5 LAKH/MONTH INCOME STREAM
-    </span>
+      <div className="text-center mb-8 max-w-2xl mx-auto gradient-border p-6">
+        <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+          <span className="text-gradient">
+            TURN AI REELS INTO A <br />
+            1–5 LAKH/MONTH INCOME STREAM
+          </span>
+          <span className="ml-2">🚀</span>
+        </h1>
 
-    {/* ROCKET OUTSIDE GRADIENT */}
-    <span className="ml-2">🚀</span>
-  </h1>
-
-  <h1 className="mt-4">
-    No Skills. No Editing. Just Upload & Earn with Viral AI Reels
-  </h1>
-</div>
-
+        <h2 className="mt-4 text-lg">
+          No Skills. No Editing. Just Upload & Earn with Viral AI Reels
+        </h2>
+      </div>
 
       {/* Rating */}
       <div className="flex items-center justify-center gap-2 mb-8">
@@ -111,7 +106,7 @@ const HeroSection = () => {
           <div className="relative">
             <img
               src={productBox}
-              alt="3000+ Anime Reels Bundle"
+              alt="Ultimate Viral Reels Mega Bundle"
               className="w-full max-w-sm mx-auto animate-float"
             />
 
@@ -121,7 +116,7 @@ const HeroSection = () => {
                 <div className="w-6 h-6 rounded-full bg-secondary/50 border border-secondary" />
               </div>
               <span className="text-xs text-muted-foreground">
-                Recently Purchased by{' '}
+                Recently Purchased by{" "}
                 <span className="text-primary font-medium">{buyer}</span>
               </span>
             </div>
@@ -132,18 +127,16 @@ const HeroSection = () => {
             {/* Features */}
             <div className="grid grid-cols-2 gap-3 mb-6">
               {features.map((feature, index) => (
-                <div key={index} className="feature-card flex items-center gap-3">
+                <div
+                  key={index}
+                  className="feature-card flex items-center gap-3"
+                >
                   <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
                     <feature.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">
-                      {}
-                    </p>
-                    <p className="text-base font-medium">
-                      {feature.sublabel}
-                    </p>
-                  </div>
+                  <p className="text-base font-medium">
+                    {feature.sublabel}
+                  </p>
                 </div>
               ))}
             </div>
@@ -166,7 +159,7 @@ const HeroSection = () => {
         {/* CTA */}
         <div className="text-center mt-8">
           <p className="text-sm text-muted-foreground mb-2">
-            ONLY 69/- TODAY
+            ONLY ₹999 TODAY
           </p>
 
           <p className="mb-4">
@@ -175,22 +168,25 @@ const HeroSection = () => {
             <span className="text-primary">~Perfect For Beginners~</span>
           </p>
 
-          <Link to="/checkout">
-            <button className="btn-primary-glow text-primary-foreground font-semibold py-4 px-8 rounded-lg flex items-center gap-2 mx-auto animate-pulse-glow">
-              <ShoppingCart className="w-5 h-5" />
-              Buy Now ₹999{' '}
-              <span className="line-through text-muted-foreground">
-                ₹99999
-              </span>
-            </button>
-          </Link>
+        <a
+  href="https://superprofile.bio/vp/ultimate-viral-50000videos"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="btn-primary-glow text-primary-foreground font-semibold py-4 px-8 rounded-lg flex items-center gap-2 mx-auto animate-pulse-glow">
+    <ShoppingCart className="w-5 h-5" />
+    Buy Now ₹999{" "}
+    <span className="line-through text-muted-foreground">₹99999</span>
+  </button>
+</a>
+
 
           <p className="text-sm text-muted-foreground mt-4">
-            Register before{' '}
+            Register before{" "}
             <span className="text-primary underline">
               {getTomorrowDate()}
-            </span>{' '}
-            To unlock bonuses worth{' '}
+            </span>{" "}
+            to unlock bonuses worth{" "}
             <span className="text-accent">₹50,000</span>
           </p>
         </div>

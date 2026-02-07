@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 
 import facebook3d from "@/assets/facebook-3d.jpg";
@@ -9,6 +8,9 @@ import pinterest3d from "@/assets/pinterest-3d.jpg";
 import snapchat3d from "@/assets/snapchat-3d.jpg";
 
 import moneyIllustration from "@/assets/make-money.png";
+
+// ✅ BUY LINK
+const BUY_LINK = "https://superprofile.bio/vp/ultimate-viral-50000videos";
 
 const PlatformsSection = () => {
   const earningMethods = [
@@ -56,14 +58,21 @@ const PlatformsSection = () => {
           ))}
         </div>
 
-        {/* BUY BUTTON */}
-        <Link to="/checkout">
-          <button className="btn-primary-glow text-primary-foreground font-semibold py-3 px-8 rounded-lg flex items-center gap-2 mx-auto mb-20">
-            <ShoppingCart className="w-5 h-5" />
-            Buy Now ₹999{" "}
-            <span className="line-through text-muted-foreground">₹99999</span>
-          </button>
-        </Link>
+        {/* ✅ BUY BUTTON WITH REAL LINK */}
+        <a
+          href={BUY_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 mx-auto mb-20
+          btn-primary-glow text-primary-foreground font-semibold
+          py-3 px-8 rounded-lg"
+        >
+          <ShoppingCart className="w-5 h-5" />
+          Buy Now ₹999{" "}
+          <span className="line-through text-muted-foreground ml-1">
+            ₹99999
+          </span>
+        </a>
 
         {/* ===== MAKE MONEY SECTION ===== */}
         <h2 className="text-2xl md:text-3xl font-bold mb-12">
