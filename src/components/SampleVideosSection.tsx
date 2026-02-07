@@ -1,15 +1,16 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Play } from "lucide-react";
 
-import sampleVideo1 from "@/assets/sample-video-1.mp4";
-import sampleVideo2 from "@/assets/sample-video-2.mp4";
-import sampleVideo3 from "@/assets/sample-video-3.mp4";
-import sampleVideo4 from "@/assets/sample-video-4.mp4";
-import sampleVideo5 from "@/assets/sample-video-5.mp4";
-import sampleVideo6 from "@/assets/sample-video-6.mp4";
+import sampleVideo1 from "@/assets/IMG_3875.mp4";
+import sampleVideo2 from "@/assets/IMG_3892.mp4";
+import sampleVideo3 from "@/assets/IMG_3894.mp4";
+import sampleVideo4 from "@/assets/IMG_3895.mp4";
+import sampleVideo5 from "@/assets/IMG_3896.mp4";
+import sampleVideo6 from "@/assets/IMG_3897.mp4";
 
 const SampleVideosSection = () => {
   const videoRefs = useRef([]);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const videos = [
     sampleVideo1,
@@ -23,13 +24,26 @@ const SampleVideosSection = () => {
   const handlePlay = (index) => {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
+
       if (i === index) {
-        video.paused ? video.play() : video.pause();
+        if (video.paused) {
+          video.muted = false; // 🔊 UNMUTE AFTER CLICK
+          video.play();
+          setActiveIndex(index);
+        } else {
+          video.pause();
+          setActiveIndex(null);
+        }
       } else {
         video.pause();
         video.currentTime = 0;
+        video.muted = true;
       }
     });
+  };
+
+  const handleEnded = () => {
+    setActiveIndex(null);
   };
 
   return (
@@ -46,7 +60,9 @@ const SampleVideosSection = () => {
             {videos.map((videoSrc, index) => (
               <div
                 key={index}
-                className="relative min-w-[160px] md:min-w-[180px] aspect-[9/16] rounded-lg overflow-hidden cursor-pointer group"
+                className={`relative min-w-[160px] md:min-w-[180px] aspect-[9/16] rounded-lg overflow-hidden cursor-pointer ${
+                  activeIndex === index ? "ring-2 ring-primary" : ""
+                }`}
                 onClick={() => handlePlay(index)}
               >
                 {/* VIDEO */}
@@ -57,14 +73,17 @@ const SampleVideosSection = () => {
                   muted
                   playsInline
                   preload="metadata"
+                  onEnded={handleEnded}
                 />
 
-                {/* PLAY ICON */}
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-100 group-hover:opacity-0 transition-opacity pointer-events-none">
-                  <div className="w-12 h-12 rounded-full bg-primary/80 flex items-center justify-center">
-                    <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground" />
+                {/* PLAY ICON (only when paused) */}
+                {activeIndex !== index && (
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center pointer-events-none">
+                    <div className="w-12 h-12 rounded-full bg-primary/80 flex items-center justify-center">
+                      <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground" />
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* INDEX */}
                 <span className="absolute bottom-2 right-2 text-xs text-white/80">
